@@ -17,7 +17,7 @@ Future developments may include the ability to recognize additional sentiments s
 #### Objectives still under definition 🚧
 
 1. **Phase 1: Sentiment Classification**
-    - Develop or use a model to classify LinkedIn posts into three categories: aggressive, joyful, and neutral.
+    - Classify LinkedIn posts into three categories: aggressive, joyful, and neutral.
     - Collect or generate and preprocess a dataset of LinkedIn posts for training and testing.
     - Evaluate the model's performance and refine it to improve accuracy.
 
