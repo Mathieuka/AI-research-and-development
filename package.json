@@ -1,0 +1,11 @@
+{
+  "name": "research-and-development",
+  "version": "1.0.0",
+  "description": "A monorepo for various research and development projects focusing on the development of AI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "license": "ISC"
+}
