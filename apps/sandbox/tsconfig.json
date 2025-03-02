@@ -1,0 +1,12 @@
+{
+  "extends": "@repo/typescript-config/base.json",
+  "include": [
+    "src",
+    "__tests__/**/*.(ts|tsx)"
+  ],
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {}
+  }
+}
