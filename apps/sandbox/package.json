@@ -8,6 +8,7 @@
   },
   "license": "ISC",
   "devDependencies": {
-    "@biomejs/biome": "1.9.4"
+    "@biomejs/biome": "1.9.4",
+    "@repo/typescript-config": "workspace:*"
   }
 }
