@@ -20,9 +20,14 @@ importers:
       '@biomejs/biome':
         specifier: 1.9.4
         version: 1.9.4
+      '@repo/biome-config':
+        specifier: workspace:*
+        version: link:../../packages/biome-config
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
+
+  packages/biome-config: {}
 
   packages/typescript-config: {}
 
