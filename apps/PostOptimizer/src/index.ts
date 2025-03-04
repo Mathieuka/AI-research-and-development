@@ -8,14 +8,20 @@ import {
 	pipeline,
 } from "@huggingface/transformers";
 import { TavilySearchResults } from "@langchain/community/tools/tavily_search";
-import { type AIMessage, HumanMessage } from "@langchain/core/messages";
+import { BaseChatModel } from "@langchain/core/language_models/chat_models";
+import {
+	type AIMessage,
+	type AIMessageChunk,
+	type BaseMessage,
+	HumanMessage,
+} from "@langchain/core/messages";
+import type { Tool } from "@langchain/core/tools";
 import {
 	MemorySaver,
 	MessagesAnnotation,
 	StateGraph,
 } from "@langchain/langgraph";
 import { ToolNode } from "@langchain/langgraph/prebuilt";
-
 import { ChatOpenAI } from "@langchain/openai";
 
 // Define the tools for the agent to use
@@ -24,10 +30,38 @@ const toolNode = new ToolNode(tools);
 
 env.cacheDir = "./cache";
 
-class HuggingFaceTransformersCustom {
+// class HuggingFaceTransformersCustom {
+// 	private task: PipelineType = "text-generation";
+// 	private model = "HuggingFaceTB/SmolLM2-360M-Instruct";
+// 	private instance: Promise<TextClassificationPipeline> | undefined = undefined;
+//
+// 	getInstance() {
+// 		if (this.instance === undefined) {
+// 			this.instance = pipeline(this.task, this.model, {
+// 				dtype: "fp32",
+// 				progress_callback: () => {
+// 					// console.log("progress : ", progress);
+// 				},
+// 			}) as Promise<TextClassificationPipeline>;
+// 		}
+//
+// 		return this.instance;
+// 	}
+//
+// 	async invoke(input: string): Promise<string> {}
+// }
+
+// const instance = await new HuggingFaceTransformersCustom().getInstance();
+
+// const response = await instance("Try it!");
+// console.log("response", response);
+
+// generate(messages: BaseMessageLike[][], options?: string[] | CallOptions, callbacks?: Callbacks): Promise<LLMResult>;
+class HuggingFaceChatModel extends BaseChatModel {
 	private task: PipelineType = "text-generation";
 	private model = "HuggingFaceTB/SmolLM2-360M-Instruct";
 	private instance: Promise<TextClassificationPipeline> | undefined = undefined;
+	private tools: Tool[] = [];
 
 	getInstance() {
 		if (this.instance === undefined) {
@@ -41,18 +75,55 @@ class HuggingFaceTransformersCustom {
 
 		return this.instance;
 	}
+
+	_generate(
+		messages: BaseMessage[],
+		// options?: string[] | CallOptions,
+		// callbacks?: Callbacks,
+	): Promise<any> {
+		return Promise.resolve({
+			messages,
+			// options,
+			// callbacks,
+		});
+	}
+
+	bindTools(tools: Tool[]) {
+		this.tools = tools;
+		return this;
+	}
+
+	async invoke(param): Promise<any> {
+		console.log(
+			"%c LOG invoke call param",
+			"background: #222; color: #bada55",
+			param,
+		);
+		return Promise.resolve({
+			tool_calls: [],
+		});
+	}
+
+	// async _call(messages: BaseMessage[]): Promise<AIMessage> {
+	// 	const messageString = messages.map((m) => m.content).join("\n");
+	// 	const response = await this.model.getInstance(messageString);
+	// 	return new AIMessage(response);
+	// }
+
+	_llmType() {
+		return "custom_huggingface";
+	}
 }
 
-const instance = await new HuggingFaceTransformersCustom().getInstance();
+const model = new HuggingFaceChatModel({}).bindTools(tools);
 
-const response = await instance("Try it!");
-console.log("response", response);
+// console.log("%c LOG modelTemp", "background: #222; color: #bada55", modelTemp);
 
 // Create model and give it access to the tools
-const model = new ChatOpenAI({
-	model: "gpt-4o-mini",
-	temperature: 0,
-}).bindTools(tools);
+// const model = new ChatOpenAI({
+// 	model: "gpt-4o-mini",
+// 	temperature: 0,
+// }).bindTools(tools);
 
 // Define the function that determines whether to continue or not
 function shouldContinue({ messages }: typeof MessagesAnnotation.State) {
