@@ -2,17 +2,26 @@
   "name": "sandbox",
   "version": "1.0.0",
   "description": "Sandbox app for various research and development projects focusing on the development and integration of AI agents",
-  "main": "src/index.ts",
+  "main": "apps/PostOptimizer/src/index.ts",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "pnpm biome format ",
     "format:fix": "pnpm biome format --write",
-    "lint": "pnpm biome lint"
+    "lint": "pnpm biome lint",
+    "start": "node --env-file=.env --import=tsx --watch src/index.ts"
   },
   "license": "ISC",
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
+    "@repo/biome-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "@repo/biome-config": "workspace:*"
+    "tsx": "^4.19.3"
+  },
+  "dependencies": {
+    "@langchain/community": "^0.3.34",
+    "@langchain/core": "^0.3.42",
+    "@langchain/langgraph": "^0.2.52",
+    "@langchain/openai": "^0.4.4"
   }
 }

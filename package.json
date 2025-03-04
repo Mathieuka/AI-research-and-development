@@ -1,6 +1,7 @@
 {
   "name": "ai-research-and-development",
   "description": "Various research and development projects focusing on the development and integration of AI agents",
+  "type": "module",
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
