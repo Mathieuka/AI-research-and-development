@@ -2,7 +2,6 @@
   "name": "sandbox",
   "version": "1.0.0",
   "description": "Sandbox app for various research and development projects focusing on the development and integration of AI agents",
-  "main": "apps/PostOptimizer/src/index.ts",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
