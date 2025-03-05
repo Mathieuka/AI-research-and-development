@@ -1,0 +1,23 @@
+{
+  "name": "core-concept",
+  "version": "1.0.0",
+  "description": "Deep dive into core concepts",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "pnpm biome format ",
+    "format:fix": "pnpm biome format --write",
+    "lint": "pnpm biome lint",
+    "start": "tsx --watch src/index.ts"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@repo/biome-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "tsx": "^4.19.3"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "^3.3.3"
+  }
+}
