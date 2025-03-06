@@ -8,7 +8,7 @@
     "format": "pnpm biome format ",
     "format:fix": "pnpm biome format --write",
     "lint": "pnpm biome lint",
-    "start": "node --env-file=.env --import=tsx --watch src/sentiment_analysis.ts"
+    "start": "node --env-file=.env --import=tsx --watch src/agent_with_custom_tool_langGraph.ts"
   },
   "license": "ISC",
   "devDependencies": {
@@ -22,6 +22,8 @@
     "@langchain/community": "^0.3.34",
     "@langchain/core": "^0.3.42",
     "@langchain/langgraph": "^0.2.52",
-    "@langchain/openai": "^0.4.4"
+    "@langchain/openai": "^0.4.4",
+    "@tavily/core": "^0.3.1",
+    "zod": "^3.24.2"
   }
 }

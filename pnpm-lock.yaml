@@ -51,6 +51,12 @@ importers:
       '@langchain/openai':
         specifier: ^0.4.4
         version: 0.4.4(@langchain/core@0.3.42(openai@4.86.1(ws@8.18.1)(zod@3.24.2)))(ws@8.18.1)
+      '@tavily/core':
+        specifier: ^0.3.1
+        version: 0.3.1
+      zod:
+        specifier: ^3.24.2
+        version: 3.24.2
     devDependencies:
       '@biomejs/biome':
         specifier: 1.9.4
@@ -82,6 +88,12 @@ importers:
       '@langchain/openai':
         specifier: ^0.4.4
         version: 0.4.4(@langchain/core@0.3.42(openai@4.86.1(ws@8.18.1)(zod@3.24.2)))(ws@8.18.1)
+      '@tavily/core':
+        specifier: ^0.3.1
+        version: 0.3.1
+      zod:
+        specifier: ^3.24.2
+        version: 3.24.2
     devDependencies:
       '@biomejs/biome':
         specifier: 1.9.4
@@ -901,6 +913,9 @@ packages:
 
   '@protobufjs/utf8@1.1.0':
     resolution: {integrity: sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==}
+
+  '@tavily/core@0.3.1':
+    resolution: {integrity: sha512-7jyvPWG4Zjst0s4v0FMLO1f/dfHqs4FnqvKm86zOGYzXxSfxHu0isbLzlwjJad0csYwF0kifdlECTuNouHfr5A==}
 
   '@tokenizer/token@0.3.0':
     resolution: {integrity: sha512-OvjF+z51L3ov0OyAU0duzsYuvO01PH7x4t6DJx+guahgTnBHkhJdG7soQeTSFLWN3efnHyibZ4Z8l2EuWwJN3A==}
@@ -2094,6 +2109,13 @@ snapshots:
   '@protobufjs/pool@1.1.0': {}
 
   '@protobufjs/utf8@1.1.0': {}
+
+  '@tavily/core@0.3.1':
+    dependencies:
+      axios: 1.7.9(debug@4.4.0)
+      js-tiktoken: 1.0.19
+    transitivePeerDependencies:
+      - debug
 
   '@tokenizer/token@0.3.0': {}
 
