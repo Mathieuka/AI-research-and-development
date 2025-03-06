@@ -7,25 +7,10 @@ and limitations of diverse AI technologies.
 These agents are tested in various scenarios to assess their performance, adaptability, and potential for
 real-world implementation.
 
-## Structure
+## Setting up the environment variables
+```bash
+cp .env.example .env
+```
 
--  **/src**: Contains the implementation of different implementations of AI agents.
-
-## Getting Started
-
-To begin testing the AI agents, follow these steps:
-
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/Mathieuka/AI-research-and-development
-
-2. **Install Dependencies**:
-   ```bash
-   pnpm install
-
-3. **Set environment variables**:
-   ```bash
-   cp .env.example .env
-   ```
    
    
