@@ -8,7 +8,10 @@
     "format": "pnpm biome format ",
     "format:fix": "pnpm biome format --write",
     "lint": "pnpm biome lint",
-    "start": "node --env-file=.env --import=tsx --watch src/agent_with_custom_tool_langGraph.ts"
+    "start:agent_langGraph": "node --env-file=.env --import=tsx --watch src/agent_langGraph.ts.ts",
+    "start:agent_with_custom_tool_langGraph": "node --env-file=.env --import=tsx --watch src/agent_with_custom_tool_langGraph.ts",
+    "start:sentiment_analysis": "node --env-file=.env --import=tsx --watch src/sentiment_analysis.ts",
+    "start:simple_llm_with_chat_model": "node --env-file=.env --import=tsx --watch src/simple_llm_with_chat_model.ts"
   },
   "license": "ISC",
   "devDependencies": {
