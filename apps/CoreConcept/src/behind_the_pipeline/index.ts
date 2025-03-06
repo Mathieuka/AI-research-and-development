@@ -1,3 +1,27 @@
+/**
+ * @fileoverview This script demonstrates how to perform sequence classification
+ * using the Hugging Face Transformers library. The example uses the
+ * 'distilbert-base-uncased-finetuned-sst-2-english' model for sentiment analysis.
+ *
+ * Steps:
+ * 1. Load the tokenizer using the specified model checkpoint.
+ * 2. Tokenize the input text to prepare it for the model.
+ * 3. Load the sequence classification model.
+ * 4. Pass the tokenized input to the model to generate logits.
+ * 5. Apply the softmax function to convert logits into probabilities.
+ *
+ * Dependencies:
+ * - @huggingface/transformers
+ *
+ * Usage:
+ * Ensure you have the necessary dependencies installed and then execute this script
+ * to classify the sentiment of the input text.
+ *
+ * Example:
+ * Input: "i'm sad"
+ * Output: Probabilities indicating the sentiment classification.
+ */
+
 import {
 	AutoModelForSequenceClassification,
 	AutoTokenizer,
