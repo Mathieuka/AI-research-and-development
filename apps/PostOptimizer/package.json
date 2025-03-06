@@ -8,7 +8,7 @@
     "format": "pnpm biome format ",
     "format:fix": "pnpm biome format --write",
     "lint": "pnpm biome lint",
-    "start": "node --env-file=.env --import=tsx --watch src/index.ts"
+    "start": "node --env-file=.env --import=tsx --watch src/sentiment_analysis.ts"
   },
   "license": "ISC",
   "devDependencies": {
