@@ -1,3 +1,4 @@
+import { trimMessages } from "@langchain/core/messages";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
 import {
 	END,
@@ -11,6 +12,15 @@ import { v4 as uuidv4 } from "uuid";
 
 const config = { configurable: { thread_id: uuidv4() } };
 
+const trimmer = trimMessages({
+	maxTokens: 10,
+	strategy: "last",
+	tokenCounter: (msgs) => msgs.length,
+	includeSystem: true,
+	allowPartial: false,
+	startOn: "human",
+});
+
 const llm = new ChatOpenAI({
 	model: "gpt-4o-mini",
 	temperature: 0,
@@ -18,7 +28,7 @@ const llm = new ChatOpenAI({
 
 // Define the function that calls the model
 const callModel = async (state: typeof MessagesAnnotation.State) => {
-	const response = await llm.invoke(state.messages);
+	const response = await llm.invoke(await trimmer.invoke(state.messages));
 
 	return { messages: response };
 };
