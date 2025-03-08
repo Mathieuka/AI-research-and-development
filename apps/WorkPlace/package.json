@@ -4,16 +4,10 @@
   "description": "Sandbox app for various research and development projects focusing on the development and integration of AI agents",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "format": "pnpm biome format ",
     "format:fix": "pnpm biome format --write",
     "lint": "pnpm biome lint",
-    "start:agent_langGraph": "node --env-file=.env --import=tsx --watch src/agent_langGraph.ts.ts",
-    "start:agent_with_custom_tool_langGraph": "node --env-file=.env --import=tsx --watch src/agent_with_custom_tool_langGraph.ts",
-    "start:sentiment_analysis": "node --env-file=.env --import=tsx --watch src/sentiment_analysis.ts",
-    "start:simple_llm_with_chat_model": "node --env-file=.env --import=tsx --watch src/simple_llm_with_chat_model.ts",
-    "start:semantic_search": "node --env-file=.env --import=tsx --watch src/semantic_search.ts",
-    "start:chatbot": "node --env-file=.env --import=tsx --watch src/chatbot.ts"
+    "start": "tsx src/start.ts"
   },
   "license": "ISC",
   "devDependencies": {
@@ -29,6 +23,7 @@
     "@langchain/langgraph": "^0.2.52",
     "@langchain/openai": "^0.4.4",
     "@tavily/core": "^0.3.1",
+    "commander": "^13.1.0",
     "pdf-parse": "^1.1.1",
     "uuid": "^11.1.0",
     "zod": "^3.24.2"
