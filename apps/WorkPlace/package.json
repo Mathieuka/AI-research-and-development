@@ -12,7 +12,8 @@
     "start:agent_with_custom_tool_langGraph": "node --env-file=.env --import=tsx --watch src/agent_with_custom_tool_langGraph.ts",
     "start:sentiment_analysis": "node --env-file=.env --import=tsx --watch src/sentiment_analysis.ts",
     "start:simple_llm_with_chat_model": "node --env-file=.env --import=tsx --watch src/simple_llm_with_chat_model.ts",
-    "start:semantic_search": "node --env-file=.env --import=tsx --watch src/semantic_search.ts"
+    "start:semantic_search": "node --env-file=.env --import=tsx --watch src/semantic_search.ts",
+    "start:chatbot": "node --env-file=.env --import=tsx --watch src/chatbot.ts"
   },
   "license": "ISC",
   "devDependencies": {
@@ -29,6 +30,7 @@
     "@langchain/openai": "^0.4.4",
     "@tavily/core": "^0.3.1",
     "pdf-parse": "^1.1.1",
+    "uuid": "^11.1.0",
     "zod": "^3.24.2"
   }
 }
