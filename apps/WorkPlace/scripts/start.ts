@@ -1,5 +1,10 @@
 import { spawn } from "node:child_process";
 import { Command } from "commander";
+import { fileURLToPath } from "node:url";
+import path from "node:path";
+
+const __filename = fileURLToPath(import.meta.url);
+const workPlaceDirectory = path.resolve(path.dirname(__filename), "..");
 
 const program = new Command();
 
@@ -14,7 +19,7 @@ const validScripts = [
 ];
 
 program.argument("<script>", "The script to run").action((script: string) => {
-	const command = `node --env-file=.env --import=tsx --watch src/${script}.ts`;
+	const command = `node --env-file=.env --import=tsx --watch ${workPlaceDirectory}/src/${script}.ts`;
 	spawn(command, { stdio: "inherit", shell: true });
 });
 

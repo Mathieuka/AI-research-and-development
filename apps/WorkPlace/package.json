@@ -7,7 +7,7 @@
     "format": "pnpm biome format ",
     "format:fix": "pnpm biome format --write",
     "lint": "pnpm biome lint",
-    "start": "tsx src/start.ts"
+    "start": "tsx ./scripts/start.ts"
   },
   "license": "ISC",
   "devDependencies": {

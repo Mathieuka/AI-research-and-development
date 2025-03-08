@@ -18,13 +18,13 @@ To run a specific script, use the following command:
 
 Replace `<script-name>` with one of the following valid script names:
 
-- agent_langGraph
-- agent_with_custom_tool_langGraph
-- sentiment_analysis
-- llm_with_chat_model
-- semantic_search
-- chatbot
-- retrieval_augmented_generation
+- `agent_langGraph`
+- `agent_with_custom_tool_langGraph`
+- `sentiment_analysis`
+- `llm_with_chat_model`
+- `semantic_search`
+- `chatbot`
+- `retrieval_augmented_generation`
 
 For example:
 ```bash
