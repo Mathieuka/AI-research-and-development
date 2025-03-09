@@ -16,6 +16,7 @@ const validScripts = [
 	"semantic_search",
 	"chatbot",
 	"retrieval_augmented_generation",
+	"graph",
 ];
 
 program.argument("<script>", "The script to run").action((script: string) => {
