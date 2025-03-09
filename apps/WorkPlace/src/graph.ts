@@ -3,13 +3,13 @@ import { Annotation, StateGraph } from "@langchain/langgraph";
 import { ChatOpenAI } from "@langchain/openai";
 import { z } from "zod";
 
-// Important here the description of the output is used by the model to know how to use the output
+// Create a tool using the ResponseFormatter schema, where the description of the output guides the model in determining how to utilize the output.
 const ResponseFormatter = z.object({
 	answer: z.string().describe("The answer to the user's question"),
 	question: z.string().describe("A followup question the user could ask"),
 });
 
-// Create a tool with ResponseFormatter as its schema give the responsibility to the model use or not the tool
+// Develop a tool using the ResponseFormatter schema, allowing the model to decide whether or not to utilize the tool.
 // const responseFormatterTool = tool(async () => {}, {
 // 	name: "responseFormatter",
 // 	schema: ResponseFormatter,
