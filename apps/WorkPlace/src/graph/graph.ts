@@ -1,26 +1,18 @@
-// import { tool } from "@langchain/core/tools";
+/**
+ * This module defines a state graph using `@langchain/langgraph` to process a question by:
+ *
+ * 1. **Generating a Query**: Rephrases the input question.
+ * 2. **Retrieving Documents**: Fetches documents based on the query.
+ * 3. **Generating an Answer**: Produces an answer from the retrieved documents.
+ *
+ * The graph consists of nodes (`generateQuery`, `retrieveDocuments`, `generate`) and edges that define the processing flow.
+ *
+ * Usage:
+ * - Invoke the graph with a question, e.g., "get all reports of type closed".
+ * - The result is logged to the console.
+ */
+
 import { Annotation, StateGraph } from "@langchain/langgraph";
-import { ChatOpenAI } from "@langchain/openai";
-import { z } from "zod";
-
-// Create a tool using the ResponseFormatter schema, where the description of the output guides the model in determining how to utilize the output.
-const ResponseFormatter = z.object({
-	answer: z.string().describe("The answer to the user's question"),
-	question: z.string().describe("A followup question the user could ask"),
-});
-
-// Develop a tool using the ResponseFormatter schema, allowing the model to decide whether or not to utilize the tool.
-// const responseFormatterTool = tool(async () => {}, {
-// 	name: "responseFormatter",
-// 	schema: ResponseFormatter,
-// });
-
-const modelTemp = new ChatOpenAI({
-	model: "gpt-4o-mini",
-	temperature: 0,
-});
-
-const model = modelTemp.withStructuredOutput(ResponseFormatter);
 
 // The overall state of the graph
 const OverallStateAnnotation = Annotation.Root({
@@ -46,19 +38,14 @@ const GenerateOutputAnnotation = Annotation.Root({
 
 // Node to generate query
 const generateQuery = async (state: typeof OverallStateAnnotation.State) => {
-	const response = await model.invoke(
-		`${state.question}, rephrased as a query!`,
-	);
-
 	return {
-		query: response.answer,
+		query: `${state.question} rephrased as a query!`,
 	};
 };
 
 // Node to retrieve documents
 const retrieveDocuments = async (state: typeof QueryOutputAnnotation.State) => {
-	// implement retrieval logic
-	// const response = retrievalLogic(
+	// implement retrieval logic here
 	return {
 		docs: { query: state.query, result: "some random document" },
 	};

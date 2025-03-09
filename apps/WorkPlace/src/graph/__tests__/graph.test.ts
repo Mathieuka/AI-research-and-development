@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { graph, stateGraph } from "../graph.ts";
+import { stateGraph } from "../graph.ts";
 
 describe("Graph", () => {
-	it("should create a graph", async () => {
+	it("should correctly initialize the stateGraph", () => {
 		const { channels, nodes, edges } = stateGraph;
 
 		expect(channels).toEqual(
@@ -19,19 +19,5 @@ describe("Graph", () => {
 		});
 
 		expect(edges.size).toEqual(3);
-
-		const response = await graph.invoke({
-			question: "Find this document",
-		});
-
-		expect(response).toEqual({
-			question: "Find this document",
-			answer:
-				"Find this document rephrased as a query!\n" +
-				"\n" +
-				"some random document\n" +
-				"\n" +
-				"Find this document",
-		});
 	});
 });

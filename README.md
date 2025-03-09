@@ -16,8 +16,6 @@ The `apps/` directories are dedicated to developing and integrating AI agents. E
 
 - **`apps/CoreConcept`**: A core concepts exploration zone, structured to facilitate learning of essential concepts through code examples, detailed explanations, and interactive experiments.
 
-- **`apps/Sandbox`**: A sandbox application designed for experimentation and testing of new ideas and AI agent drafts.
-
 ### Packages
 
 The `packages/` directories contain shared modules and configurations that are reused across different applications, ensuring consistency and reducing duplication of effort.

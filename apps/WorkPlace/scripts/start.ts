@@ -12,11 +12,12 @@ const validScripts = [
 	"agent_langGraph",
 	"agent_with_custom_tool_langGraph",
 	"sentiment_analysis",
+	"behind_the_pipeline",
 	"llm_with_chat_model",
 	"semantic_search",
 	"chatbot",
 	"retrieval_augmented_generation",
-	"graph",
+	"graph_with_model",
 ];
 
 program.argument("<script>", "The script to run").action((script: string) => {
