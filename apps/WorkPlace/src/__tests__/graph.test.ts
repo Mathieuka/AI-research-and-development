@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { graph, stateGraph } from "../index.js";
+import { graph, stateGraph } from "../graph.ts";
 
 describe("Graph", () => {
 	it("should create a graph", async () => {
