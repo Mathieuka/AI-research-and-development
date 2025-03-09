@@ -1,4 +1,26 @@
+import { tool } from "@langchain/core/tools";
 import { Annotation, StateGraph } from "@langchain/langgraph";
+import { ChatOpenAI } from "@langchain/openai";
+import { z } from "zod";
+
+// Important here the description of the output is used by the model to know how to use the output
+const ResponseFormatter = z.object({
+	answer: z.string().describe("The answer to the user's question"),
+	question: z.string().describe("A followup question the user could ask"),
+});
+
+// Create a tool with ResponseFormatter as its schema give the responsibility to the model use or not the tool
+// const responseFormatterTool = tool(async () => {}, {
+// 	name: "responseFormatter",
+// 	schema: ResponseFormatter,
+// });
+
+const modelTemp = new ChatOpenAI({
+	model: "gpt-4o-mini",
+	temperature: 0,
+});
+
+const model = modelTemp.withStructuredOutput(ResponseFormatter);
 
 // The overall state of the graph
 const OverallStateAnnotation = Annotation.Root({
@@ -24,24 +46,28 @@ const GenerateOutputAnnotation = Annotation.Root({
 
 // Node to generate query
 const generateQuery = async (state: typeof OverallStateAnnotation.State) => {
-	// Replace this with real logic
+	const response = await model.invoke(
+		`${state.question}, rephrased as a query!`,
+	);
+
 	return {
-		query: `${state.question} rephrased as a query!`,
+		query: response.answer,
 	};
 };
 
 // Node to retrieve documents
 const retrieveDocuments = async (state: typeof QueryOutputAnnotation.State) => {
-	// Replace this with real logic
+	// implement retrieval logic
+	// const response = retrievalLogic(
 	return {
-		docs: [state.query, "some random document"],
+		docs: { query: state.query, result: "some random document" },
 	};
 };
 
 // Node to generate answer
 const generate = async (state: typeof GenerateOutputAnnotation.State) => {
 	return {
-		answer: state.docs.concat([state.question]).join("\n\n"),
+		answer: state.docs,
 	};
 };
 
@@ -57,6 +83,9 @@ export const stateGraph = new StateGraph(OverallStateAnnotation)
 
 export const graph = stateGraph.compile();
 
-await graph.invoke({
-	question: "How are you?",
+const result = await graph.invoke({
+	question: "get all reports of type closed",
 });
+
+console.log("");
+console.log("Result => ", result);
