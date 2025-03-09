@@ -7,14 +7,16 @@
     "format": "pnpm biome format ",
     "format:fix": "pnpm biome format --write",
     "lint": "pnpm biome lint",
-    "start": "tsx ./scripts/start.ts"
+    "start": "tsx ./scripts/start.ts",
+    "test": "vitest --watch --config test/vitest.config.mts"
   },
   "license": "ISC",
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@repo/biome-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "tsx": "^4.19.3"
+    "tsx": "^4.19.3",
+    "vite-tsconfig-paths": "^5.1.4"
   },
   "dependencies": {
     "@huggingface/transformers": "^3.3.3",
