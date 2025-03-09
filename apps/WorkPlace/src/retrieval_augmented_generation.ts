@@ -62,8 +62,6 @@ const allSplits = await splitter.splitDocuments(docs);
 // Index chunks
 await vectorStore.addDocuments(allSplits);
 
-// Define prompt for question-answering
-
 // Define state for application
 const InputStateAnnotation = Annotation.Root({
 	question: Annotation<string>,

@@ -14,8 +14,6 @@ The `apps/` directories are dedicated to developing and integrating AI agents. E
 
 - **`apps/WorkPlace`**: A dedicated space to explore, test, and evaluate various AI agents developed from different models, each tailored for unique use cases.
 
-- **`apps/CoreConcept`**: A core concepts exploration zone, structured to facilitate learning of essential concepts through code examples, detailed explanations, and interactive experiments.
-
 ### Packages
 
 The `packages/` directories contain shared modules and configurations that are reused across different applications, ensuring consistency and reducing duplication of effort.
