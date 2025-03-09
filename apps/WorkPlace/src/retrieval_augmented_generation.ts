@@ -1,3 +1,29 @@
+/**
+ * PDF Question-Answering System
+ *
+ * This script implements a question-answering system based on PDF documents using LangChain and OpenAI technologies.
+ * It demonstrates how to load a PDF, split it into chunks, index these chunks in a vector store,
+ * and then use this information to answer user queries.
+ *
+ * Key Features:
+ * - PDF loading and parsing
+ * - Text chunking and indexing
+ * - Vector similarity search
+ * - LLM-based question answering
+ * - State management using LangChain's StateGraph
+ *
+ * Process Flow:
+ * 1. Load PDF document
+ * 2. Split document into chunks
+ * 3. Generate embeddings and index chunks in vector store
+ * 4. Define state graph for question-answering process
+ * 5. Execute graph with user query
+ * 6. Return generated answer
+ *
+ * Note: This script is designed for educational and demonstration purposes.
+ * Ensure compliance with OpenAI's use-case policies and licensing terms of all libraries used.
+ */
+
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { PDFLoader } from "@langchain/community/document_loaders/fs/pdf";
@@ -10,7 +36,6 @@ import { pull } from "langchain/hub";
 import { MemoryVectorStore } from "langchain/vectorstores/memory";
 
 const __filename = fileURLToPath(import.meta.url);
-
 const __dirname = path.dirname(__filename);
 
 const llm = new ChatOpenAI({
