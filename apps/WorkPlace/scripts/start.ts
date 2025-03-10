@@ -17,6 +17,7 @@ const validScripts = [
 	"semantic_search",
 	"chatbot",
 	"retrieval_augmented_generation",
+	"multi_step_retrieval_augmented_generation",
 	"graph_with_model",
 ];
 
