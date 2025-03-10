@@ -100,9 +100,28 @@ const graph = new StateGraph(StateAnnotation)
 	.addEdge("generate", "__end__")
 	.compile();
 
-const inputs = {
-	question: "Do you know my email ?",
-};
+// const input1 = {
+// 	question: "Do you know my email ?",
+// };
+//
+// const result1 = await graph.invoke(input1);
+// console.log(result1.answer);
 
-const result = await graph.invoke(inputs);
-console.log(result.answer);
+const input2 = { question: "What is Task Decomposition?" };
+// const result2 = await graph.invoke(input2);
+// console.log(`\nAnswer: ${result2.answer}`);
+
+// console.log("\n====\n");
+// for await (const chunk of await graph.stream(input2, {
+// 	streamMode: "updates",
+// })) {
+// 	console.log("response : ", chunk);
+// 	console.log("\n====\n");
+// }
+
+// Stream tokens
+const stream = await graph.stream(input2, { streamMode: "messages" });
+
+for await (const [message, _metadata] of stream) {
+	process.stdout.write(message.content);
+}
