@@ -1,0 +1,34 @@
+version: "3"
+
+services:
+  my-pokemon-db:
+    image: postgres:15-alpine
+    container_name: my-pokemon-db
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: my-pokemon-dev
+      PGDATA: /data/postgres
+    volumes:
+      - my-pokemon-db:/data/postgres
+    ports:
+      - "127.0.0.1:5434:5432"
+    restart: on-failure
+
+  my-pokemon-test-db:
+    image: postgres:15-alpine
+    container_name: my-pokemon-integration-db
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: my-pokemon-integration-dev
+      PGDATA: /data/postgres
+    volumes:
+      - my-pokemon-integration-db:/data/postgres
+    ports:
+      - "127.0.0.1:5435:5432"
+    restart: on-failure
+
+volumes:
+  my-pokemon-db:
+  my-pokemon-integration-db:
