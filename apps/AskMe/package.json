@@ -1,9 +1,8 @@
 {
-  "name": "my-pokemon",
+  "name": "api",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
-  "private": true,
+  "description": "Nestjs API ",
+  "author": "Mathieu Kahlaoui",
   "license": "UNLICENSED",
   "scripts": {
     "build": "nest build",

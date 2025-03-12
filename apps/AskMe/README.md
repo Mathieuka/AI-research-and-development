@@ -1,3 +1,10 @@
+### Docker compose
+
+#### Run postgres
+```bash
+docker-compose up -d
+```
+
 ### TypeORM
 
 #### Generate migration
