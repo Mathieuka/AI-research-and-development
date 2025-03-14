@@ -1,35 +1,37 @@
 # https://github.com/timescale/pgai/blob/main/docs/vectorizer/quick-start.md
 name: pgai
 services:
-  db:
+  dev:
     image: timescale/timescaledb-ha:pg17
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
+      POSTGRES_DB: db-pgai
     ports:
       - "5434:5432"
     volumes:
-      - db:/home/postgres/pgdata/data
+      - db-pgai:/home/postgres/pgdata/data
   vectorizer-worker:
     image: timescale/pgai-vectorizer-worker:latest
     environment:
-      PGAI_VECTORIZER_WORKER_DB_URL: postgres://postgres:postgres@db:5432/postgres
+      PGAI_VECTORIZER_WORKER_DB_URL: postgres://postgres:postgres@dev:5432/db-pgai
       OLLAMA_HOST: http://ollama:11434
     command: [ "--poll-interval", "5s" ]
 
-  test-db:
+  test:
     image: timescale/timescaledb-ha:pg17
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
+      POSTGRES_DB: db-pgai-test
     ports:
       - "5435:5432"
     volumes:
-      - test-db:/home/postgres/pgdata/data
+      - db-pgai-test:/home/postgres/pgdata/data
   test-vectorizer-worker:
     image: timescale/pgai-vectorizer-worker:latest
     environment:
-      PGAI_VECTORIZER_WORKER_DB_URL: postgres://postgres:postgres@test-db:5432/postgres
+      PGAI_VECTORIZER_WORKER_DB_URL: postgres://postgres:postgres@test:5432/db-pgai-test
       OLLAMA_HOST: http://ollama:11434
     command: [ "--poll-interval", "5s" ]
 
@@ -38,5 +40,5 @@ services:
     ports:
       - "11434:11434"
 volumes:
-  db:
-  test-db:
+  db-pgai:
+  db-pgai-test:
