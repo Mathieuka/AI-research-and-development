@@ -1,34 +1,41 @@
-version: "3"
-
+name: pgai
 services:
-  my-pokemon-db:
-    image: postgres:15-alpine
-    container_name: my-pokemon-db
+  db:
+    image: timescale/timescaledb-ha:pg17
     environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: my-pokemon-dev
-      PGDATA: /data/postgres
-    volumes:
-      - my-pokemon-db:/data/postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
     ports:
-      - "127.0.0.1:5434:5432"
-    restart: on-failure
-
-  my-pokemon-test-db:
-    image: postgres:15-alpine
-    container_name: my-pokemon-integration-db
+      - "5434:5432"
+    volumes:
+      - db:/home/postgres/pgdata/data
+  vectorizer-worker:
+    image: timescale/pgai-vectorizer-worker:latest
     environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: my-pokemon-integration-dev
-      PGDATA: /data/postgres
-    volumes:
-      - my-pokemon-integration-db:/data/postgres
-    ports:
-      - "127.0.0.1:5435:5432"
-    restart: on-failure
+      PGAI_VECTORIZER_WORKER_DB_URL: postgres://postgres:postgres@db:5432/postgres
+      OLLAMA_HOST: http://ollama:11434
+    command: [ "--poll-interval", "5s" ]
 
+  test-db:
+    image: timescale/timescaledb-ha:pg17
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+    ports:
+      - "5435:5432"
+    volumes:
+      - test-db:/home/postgres/pgdata/data
+  test-vectorizer-worker:
+    image: timescale/pgai-vectorizer-worker:latest
+    environment:
+      PGAI_VECTORIZER_WORKER_DB_URL: postgres://postgres:postgres@test-db:5432/postgres
+      OLLAMA_HOST: http://ollama:11434
+    command: [ "--poll-interval", "5s" ]
+
+  ollama:
+    image: ollama/ollama
+    ports:
+      - "11434:11434"
 volumes:
-  my-pokemon-db:
-  my-pokemon-integration-db:
+  db:
+  test-db:
