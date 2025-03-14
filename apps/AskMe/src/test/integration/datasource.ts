@@ -9,14 +9,14 @@ type TestConfig = {
 
 export const testConfig: TestConfig = {
   port: 5435,
-  database: 'my-pokemon-integration-dev',
+  database: 'test-db',
 };
 
 export const dataSourceIntegrationTest = new DataSource({
   type: 'postgres',
   host: 'localhost',
-  username: 'user',
-  password: 'password',
+  username: 'postgres',
+  password: 'postgres',
   entities: [Pokemon, User],
   ...(process.env.NODE_ENV === 'test' ? testConfig : {}),
 });
