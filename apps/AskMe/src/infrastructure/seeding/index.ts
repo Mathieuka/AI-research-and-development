@@ -8,17 +8,17 @@ const seedPath = path.join(__dirname, './seeds/*.seed.ts');
 const factoryPath = path.join(__dirname, 'factories/*.factory.ts');
 
 const options: DataSourceOptions & SeederOptions = {
-  type: 'postgres',
-  host: 'localhost',
-  port: 5434,
-  username: 'postgres',
-  password: 'postgres',
-  database: 'db-pgai',
-  entities: [Pokemon, User],
-  migrationsRun: false,
-  seedTracking: false,
-  factories: [factoryPath],
-  seeds: [seedPath],
+	type: 'postgres',
+	host: 'localhost',
+	port: 5434,
+	username: 'postgres',
+	password: 'postgres',
+	database: 'db-pgai',
+	entities: [Pokemon, User],
+	migrationsRun: false,
+	seedTracking: false,
+	factories: [factoryPath],
+	seeds: [seedPath],
 };
 
 const AppDataSource = new DataSource(options);

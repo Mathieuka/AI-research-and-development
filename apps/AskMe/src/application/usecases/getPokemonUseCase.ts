@@ -4,9 +4,9 @@ import { Pokemon } from '@/infrastructure/database/entities/pokemon.entity';
 
 @Injectable()
 export class GetPokemonUseCase {
-  constructor(private pokemonRepository: PokemonRepository) {}
+	constructor(private pokemonRepository: PokemonRepository) {}
 
-  async execute(): Promise<Pokemon> {
-    return this.pokemonRepository.get();
-  }
+	async execute(): Promise<Pokemon> {
+		return this.pokemonRepository.get();
+	}
 }

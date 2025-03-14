@@ -1,10 +1,8 @@
-import { Module } from '@nestjs/common';
-import { PokemonModule } from '@/modules/pokemon.module';
 import { DatabaseModule } from '@/modules/database.module';
+import { PokemonModule } from '@/modules/pokemon.module';
+import { Module } from '@nestjs/common';
 
 @Module({
-  imports: [PokemonModule, DatabaseModule],
+	imports: [PokemonModule, DatabaseModule],
 })
-export class AppModule {
-  constructor() {}
-}
+export class AppModule {}

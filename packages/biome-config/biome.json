@@ -22,17 +22,23 @@
 		"rules": {
 			"recommended": true,
 			"suspicious": {
-				"noExplicitAny": "error",
+				"noExplicitAny": "warn",
 				"noImplicitAnyLet": "error"
 			},
 			"correctness": {
-				"noUnusedVariables": "error"
+				"noUnusedVariables": "warn"
+			},
+			"style": {
+				"useImportType": "off"
 			}
 		}
 	},
 	"javascript": {
 		"formatter": {
-			"quoteStyle": "double"
+			"quoteStyle": "single"
+		},
+		"parser": {
+			"unsafeParameterDecoratorsEnabled": true
 		}
 	}
 }

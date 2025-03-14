@@ -4,9 +4,9 @@ import { PokemonRepository } from '@/infrastructure/repositories/pokemon/pokemon
 
 @Injectable()
 export class FindAllPokemonUseCase {
-  constructor(private pokemonRepository: PokemonRepository) {}
+	constructor(private pokemonRepository: PokemonRepository) {}
 
-  async execute(): Promise<Pokemon[]> {
-    return this.pokemonRepository.findAll();
-  }
+	async execute(): Promise<Pokemon[]> {
+		return this.pokemonRepository.findAll();
+	}
 }
