@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Sandbox app for various research and development projects focusing on the development and integration of AI agents",
   "type": "module",
+  "license": "ISC",
   "scripts": {
     "format": "pnpm biome format ",
     "format:fix": "pnpm biome format --write",
@@ -10,7 +11,6 @@
     "start": "tsx ./scripts/start.ts",
     "test": "vitest --watch --config test/vitest.config.mts"
   },
-  "license": "ISC",
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@repo/biome-config": "workspace:*",

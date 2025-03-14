@@ -18,7 +18,6 @@
     "node": ">=18"
   },
   "contributors": [
-    "Salim Laimeche",
     "Mathieu Kahlaoui"
   ]
 }
