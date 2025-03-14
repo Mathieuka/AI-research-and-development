@@ -16,10 +16,10 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:watch": "jest --watch --config ./test-config/jest-e2e.config.mjs",
-    "migration:generate": "npx ts-node -r tsconfig-paths/register  ./node_modules/typeorm/cli.js migration:generate src/infrastructure/database/migrations/$npm_config_name -d src/typeorm.config.ts",
-    "migration:run": "npx ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run -d src/typeorm.config.ts",
-    "migration:integration:run": "npx ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run -d src/typeorm.integration.test.config.ts",
-    "seed": "npx ts-node -r tsconfig-paths/register ./node_modules/typeorm-extension/bin/cli.cjs seed:run -d src/infrastructure/seeding/index.ts"
+    "migration:generate": "npx ts-node -P ./tsconfig.json -r tsconfig-paths/register  ./node_modules/typeorm/cli.js migration:generate src/infrastructure/database/migrations/$npm_config_name -d src/typeorm.config.ts",
+    "migration:run": "npx ts-node -P ./tsconfig.json -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run -d src/typeorm.config.ts",
+    "migration:integration:run": "npx ts-node -P ./tsconfig.json -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run -d src/typeorm.integration.test.config.ts",
+    "seed": "npx ts-node -P ./tsconfig.json -r tsconfig-paths/register ./node_modules/typeorm-extension/bin/cli.cjs seed:run -d src/infrastructure/seeding/index.ts"
   },
   "dependencies": {
     "@langchain/community": "^0.3.34",
