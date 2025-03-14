@@ -1,3 +1,4 @@
+# https://github.com/timescale/pgai/blob/main/docs/vectorizer/quick-start.md
 name: pgai
 services:
   db:
