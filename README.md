@@ -13,6 +13,8 @@ This monorepo comprises various applications and shared packages that support th
 The `apps/` directories are dedicated to developing and integrating AI agents. Each application serves a unique purpose and can be developed independently while sharing common resources through the packages.
 
 - **`apps/WorkPlace`**: A dedicated space to explore, test, and evaluate various AI agents developed from different models, each tailored for unique use cases.
+- 
+- **`apps/AskMe`**: A NestJS Application that utilizes LangChain and LangGraphJS to create a conversational AI application with pg-ai and pgai-vectorizer.
 
 ### Packages
 
