@@ -12,7 +12,7 @@ import { testConfig } from '@/test/integration/datasource';
       port: 5434,
       username: 'postgres',
       password: 'postgres',
-      database: 'db',
+      database: 'db-pgai',
       entities: [Pokemon, User],
       synchronize: false,
       logging: false,

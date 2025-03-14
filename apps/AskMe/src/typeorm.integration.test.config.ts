@@ -8,7 +8,7 @@ const AppDataSource = new DataSource({
   port: 5435,
   username: 'postgres',
   password: 'postgres',
-  database: 'test-db',
+  database: 'db-pgai-test',
   entities: [Pokemon, User],
   synchronize: false,
   migrations: ['src/infrastructure/database/migrations/*.ts'],

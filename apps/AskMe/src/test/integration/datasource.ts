@@ -9,7 +9,7 @@ type TestConfig = {
 
 export const testConfig: TestConfig = {
   port: 5435,
-  database: 'test-db',
+  database: 'db-pgai-test',
 };
 
 export const dataSourceIntegrationTest = new DataSource({

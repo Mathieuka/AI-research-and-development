@@ -13,7 +13,7 @@ const options: DataSourceOptions & SeederOptions = {
   port: 5434,
   username: 'postgres',
   password: 'postgres',
-  database: 'db',
+  database: 'db-pgai',
   entities: [Pokemon, User],
   migrationsRun: false,
   seedTracking: false,
